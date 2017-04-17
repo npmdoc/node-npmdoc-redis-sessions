@@ -1,0 +1,435 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/smrchy/redis-sessions#readme">redis-sessions (v1.2.0)</a>
+</h1>
+<h4>An advanced session store for Redis</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.redis-sessions">module redis-sessions</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">redis-sessions.</span>usingDomains</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.redis-sessions">
+            function <span class="apidocSignatureSpan"></span>redis-sessions
+            <span class="apidocSignatureSpan">(o)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.EventEmitter">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>EventEmitter
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.init">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.listenerCount">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>listenerCount
+            <span class="apidocSignatureSpan">(emitter, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.toString">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">redis-sessions.</span>defaultMaxListeners</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">redis-sessions.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.redis-sessions.init">module redis-sessions.init</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.init.init">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.redis-sessions.listenerCount">module redis-sessions.listenerCount</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.listenerCount.listenerCount">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>listenerCount
+            <span class="apidocSignatureSpan">(emitter, type)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.redis-sessions.toString">module redis-sessions.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.redis-sessions.toString.toString">
+            function <span class="apidocSignatureSpan">redis-sessions.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.redis-sessions" id="apidoc.module.redis-sessions">module redis-sessions</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.redis-sessions" id="apidoc.element.redis-sessions.redis-sessions">
+        function <span class="apidocSignatureSpan"></span>redis-sessions
+        <span class="apidocSignatureSpan">(o)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RedisSessions(o) {
+  var ref, ref1, wipe;
+  if (o == null) {
+    o = {};
+  }
+  this._wipe = bind(this._wipe, this);
+  this._returnSessions = bind(this._returnSessions, this);
+  this._initErrors = bind(this._initErrors, this);
+  this._handleError = bind(this._handleError, this);
+  this.soid = bind(this.soid, this);
+  this.soapp = bind(this.soapp, this);
+  this.set = bind(this.set, this);
+  this.quit = bind(this.quit, this);
+  this.ping = bind(this.ping, this);
+  this.killsoid = bind(this.killsoid, this);
+  this.killall = bind(this.killall, this);
+  this._kill = bind(this._kill, this);
+  this.kill = bind(this.kill, this);
+  this.get = bind(this.get, this);
+  this.create = bind(this.create, this);
+  this.activity = bind(this.activity, this);
+  this._initErrors();
+  this.redisns = o.namespace || "rs";
+  this.redisns = this.redisns + ":";
+  if (((ref = o.client) != null ? (ref1 = ref.constructor) != null ? ref1.name : void 0 : void 0) === "RedisClient") {
+    this.redis = o.client;
+  } else if (o.options &amp;&amp; o.options.url) {
+    this.redis = RedisInst.createClient(o.options);
+  } else {
+    this.redis = RedisInst.createClient(o.port || 6379, o.host || "127.0.0.1", o.options || {});
+  }
+  this.connected = this.redis.connected || false;
+  this.redis.on("connect", (function(_this) {
+    return function() {
+      _this.connected = true;
+      _this.emit("connect");
+    };
+  })(this));
+  this.redis.on("error", (function(_this) {
+    return function(err) {
+      if (err.message.indexOf("ECONNREFUSED")) {
+        _this.connected = false;
+        _this.emit("disconnect");
+      } else {
+        console.error("Redis ERROR", err);
+        _this.emit("error");
+      }
+    };
+  })(this));
+  if (o.wipe !== 0) {
+    wipe = o.wipe || 600;
+    if (wipe &lt; 10) {
+      wipe = 10;
+    }
+    setInterval(this._wipe, wipe * 1000);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.EventEmitter" id="apidoc.element.redis-sessions.EventEmitter">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>EventEmitter
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.init" id="apidoc.element.redis-sessions.init">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function () {
+  this.domain = null;
+  if (EventEmitter.usingDomains) {
+    // if there is an active domain, then attach to it.
+    domain = domain || require('domain');
+    if (domain.active &amp;&amp; !(this instanceof domain.Domain)) {
+      this.domain = domain.active;
+    }
+  }
+
+  if (!this._events || this._events === Object.getPrototypeOf(this)._events) {
+    this._events = new EventHandlers();
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.listenerCount" id="apidoc.element.redis-sessions.listenerCount">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>listenerCount
+        <span class="apidocSignatureSpan">(emitter, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">listenerCount = function (emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.toString" id="apidoc.element.redis-sessions.toString">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+RedisSessions.prototype._createToken = function() {
+  var i, j, possible, t;
+  t = "";
+  possible = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789";
+  for (i = j = 0; j &lt; 55; i = ++j) {
+    t += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return t + 'Z' + new Date().getTime().<span class="apidocCodeKeywordSpan">toString</span>(36);
+};
+
+RedisSessions.prototype._handleError = function(cb, err, data) {
+  var _err, ref;
+  if (data == null) {
+    data = {};
+  }
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.redis-sessions.init" id="apidoc.module.redis-sessions.init">module redis-sessions.init</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.init.init" id="apidoc.element.redis-sessions.init.init">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function () {
+  this.domain = null;
+  if (EventEmitter.usingDomains) {
+    // if there is an active domain, then attach to it.
+    domain = domain || require('domain');
+    if (domain.active &amp;&amp; !(this instanceof domain.Domain)) {
+      this.domain = domain.active;
+    }
+  }
+
+  if (!this._events || this._events === Object.getPrototypeOf(this)._events) {
+    this._events = new EventHandlers();
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.redis-sessions.listenerCount" id="apidoc.module.redis-sessions.listenerCount">module redis-sessions.listenerCount</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.listenerCount.listenerCount" id="apidoc.element.redis-sessions.listenerCount.listenerCount">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>listenerCount
+        <span class="apidocSignatureSpan">(emitter, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">listenerCount = function (emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.redis-sessions.toString" id="apidoc.module.redis-sessions.toString">module redis-sessions.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.redis-sessions.toString.toString" id="apidoc.element.redis-sessions.toString.toString">
+        function <span class="apidocSignatureSpan">redis-sessions.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+RedisSessions.prototype._createToken = function() {
+  var i, j, possible, t;
+  t = "";
+  possible = "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxyz0123456789";
+  for (i = j = 0; j &lt; 55; i = ++j) {
+    t += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return t + 'Z' + new Date().getTime().<span class="apidocCodeKeywordSpan">toString</span>(36);
+};
+
+RedisSessions.prototype._handleError = function(cb, err, data) {
+  var _err, ref;
+  if (data == null) {
+    data = {};
+  }
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
