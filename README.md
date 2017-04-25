@@ -1,4 +1,7 @@
-# api documentation for  [redis-sessions (v1.2.0)](https://github.com/smrchy/redis-sessions#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-redis-sessions.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-redis-sessions) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-redis-sessions.svg)](https://travis-ci.org/npmdoc/node-npmdoc-redis-sessions)
+# npmdoc-redis-sessions
+
+#### basic api documentation for  [redis-sessions (v1.2.0)](https://github.com/smrchy/redis-sessions#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-redis-sessions.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-redis-sessions) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-redis-sessions.svg)](https://travis-ci.org/npmdoc/node-npmdoc-redis-sessions)
+
 #### An advanced session store for Redis
 
 [![NPM](https://nodei.co/npm/redis-sessions.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/redis-sessions)
@@ -69,7 +72,8 @@
     "scripts": {
         "test": "mocha ./test/test.js"
     },
-    "version": "1.2.0"
+    "version": "1.2.0",
+    "bin": {}
 }
 ```
 
